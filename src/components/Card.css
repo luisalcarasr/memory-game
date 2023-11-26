@@ -6,6 +6,12 @@
   width: 140px;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
   user-select: none;
+
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: all 0.5s;
+
   img {
     width: 100%;
   }
@@ -14,4 +20,26 @@
     text-align: center;
     margin-top: 0.5rem;
   }
+}
+
+.card.flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.card-face {
+  display: flex;
+  flex-direction: column;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+
+.card-face--front {
+  img {
+    position: absolute;
+    transform: translateY(-200%);
+  }
+}
+
+.card-face--back {
+  transform: rotateY(180deg);
 }
