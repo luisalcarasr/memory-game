@@ -16,24 +16,21 @@ export const Card: React.FC<CardProps> = ({ name, flipped, onClick }) => {
   }, [setPokemon, name]);
 
   return (
-    <div
-      className="card"
-      style={{
-        backgroundColor: flipped ? "cyan" : "gray",
-        minWidth: "50px",
-        minHeight: "80px",
-      }}
-      onClick={onClick}
-    >
+    <div className="card" onClick={onClick}>
       <img
-        onLoad={() => console.log(false)}
         src={pokemon?.sprites.other["official-artwork"].front_default}
         alt={pokemon?.name}
-        width="60"
         style={{
-          display: flipped ? "block" : "none",
+          visibility: flipped ? "visible" : "hidden",
         }}
       />
+      <span
+        style={{
+          visibility: flipped ? "visible" : "hidden",
+        }}
+      >
+        {pokemon?.name ?? name}
+      </span>
     </div>
   );
 };
